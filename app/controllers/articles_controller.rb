@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :require_user, except: [:show, :index]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /articles or /articles.json
   def index
@@ -68,4 +70,12 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :description)
     end
+
+    # Check if the logged in user is the one that created the article
+    def require_same_user
+    if current_user != @article.user && !current_user.admin?
+      flash[:alert] = "You can only edit or delete your own article"
+      redirect_to @article
+    end
+  end
 end

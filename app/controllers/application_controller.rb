@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  # defined as helper_method so that it is available in the views as well as controllers
   helper_method :current_user, :logged_in?
 
   def current_user
@@ -6,6 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
+    # !! This is to do memoization (saving a method's return value so it does not have to be recomputed each time)
     !!current_user
   end
 

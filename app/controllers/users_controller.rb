@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-  #before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_user, only: [:edit, :update]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /users or /users.json
   def index
@@ -71,6 +72,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:username, :email, :password)
     end
 
+    # Check if the logged in user is the one that they want to edit or destroy
     def require_same_user
       if current_user != @user && !current_user.admin?
         flash[:alert] = "You can only edit or delete your own account"
