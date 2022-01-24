@@ -1,5 +1,9 @@
 <h1 class="text-center mt-4">Articles</h1>
 
+<div class="text-center mt-2 mb-4">
+  <%= react_component("HelloWorld", {greeting: "Hello, I'm a Component"}) %>
+</div>
+
 <div class="flickr_pagination">
   <%= will_paginate @articles, :container => false %>
 </div>
