@@ -24,6 +24,18 @@
           </div>
         </div>
 
+        <div class="form-group row mt-4">
+            <div class="control-label col-2 col-form-label text-light">
+              <%= f.label :color %>
+            </div>
+            <div class="col-sm-2">
+              <%= f.text_field :color, class: "form-control shadow rounded", placeholder: "Enter color" %>
+            </div>
+            <div class="col-sm-6">
+              <%= react_component('Colorpicker', { selector: 'user_color' } ) %>
+            </div>
+        </div>
+
         <div class="form-group text-center mt-4 justify-content-center">
           <%= f.submit(@user.new_record? ? "Sign up" : "Update account", class: "btn btn-outline-light btn-lg") %>
         </div>

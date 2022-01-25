@@ -7,5 +7,9 @@ module ApplicationHelper
     gravatar_url = "https://www.gravatar.com/avatar/#{hash}?s=#{size}"
     image_tag(gravatar_url, alt: user.username, class: "rounded shadow mx-auto d-block")
   end
-  
+
+  def prefered_color
+    return current_user.color if (current_user && current_user.color.present?)
+    'lightgrey'
+  end
 end

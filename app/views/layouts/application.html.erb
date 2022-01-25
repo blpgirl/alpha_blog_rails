@@ -14,7 +14,7 @@
   <body class="d-flex flex-column">
     <%= render "layouts/navigation" %>
 
-    <div id="page-content">
+    <div id="page-content" style="background: <%= prefered_color %>">
       <%= render "layouts/messages" %>
       <%= yield %>
     </div>

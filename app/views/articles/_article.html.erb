@@ -19,7 +19,8 @@
         <!----- .html_safe is to escape special characters like ' ---!>
 
         <%= react_component("Article", { title: article.title, path: article_path(article),
-              class: "text-success", description: truncate(article.description.html_safe, length: 100) }) %>
+              class_css: "text-success", description: truncate(article.description.html_safe, length: 100),
+              created_at: article.created_at, updated_at: article.updated_at }) %>
         <%= link_to "View", article_path(article), class: "btn btn-outline-success" %>
         <% if logged_in? && (article.user == current_user || current_user.admin?) %>
           <%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-info" %>
