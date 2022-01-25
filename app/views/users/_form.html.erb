@@ -32,7 +32,7 @@
               <%= f.text_field :color, class: "form-control shadow rounded", placeholder: "Enter color" %>
             </div>
             <div class="col-sm-6">
-              <%= react_component('Colorpicker', { selector: 'user_color' } ) %>
+              <%= react_component('Colorpicker', { color:prefered_color, selector: 'user_color' } ) %>
             </div>
         </div>
 
